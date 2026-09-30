@@ -1,3 +1,177 @@
-<html>
-<h1>풍꽝미잉 홈페이지</hi>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 서울 여행 & 맛집 기록</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF5722;
+            --primary-dark: #E64A19;
+            --bg-color: #FAFAFA;
+            --card-bg: #FFFFFF;
+            --text-main: #333333;
+            --text-sub: #666666;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard', sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        header p {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        section {
+            margin-bottom: 60px;
+        }
+        h2.section-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--primary);
+            padding-left: 15px;
+            color: var(--text-main);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            background-color: #ddd;
+        }
+        .card-content {
+            padding: 20px;
+        }
+        .card-number {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+        }
+        footer {
+            background-color: #1a1a1a;
+            color: #888;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🇰🇷 서울 매력 탐구 생활</h1>
+        <p>제가 가장 사랑하는 도시, 서울의 베스트 명소 10곳과 맛있는 음식 10가지를 소개합니다.</p>
+    </header>
+
+    <div class="container">
+        <!-- 서울 명소 10선 -->
+        <section>
+            <h2 class="section-title">✨ 서울 추천 베스트 명소 10선</h2>
+            <div class="grid" id="places-grid"></div>
+        </section>
+
+        <!-- 한국 음식 10선 -->
+        <section>
+            <h2 class="section-title">🥢 꼭 먹어야 할 한국 음식 10선</h2>
+            <div class="grid" id="foods-grid"></div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 My Korea Travel Archive. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const places = [
+            { num: "01", title: "경복궁", desc: "조선 시대의 정궁으로 웅장한 건축물과 수문장 교대식을 볼 수 있는 곳.", img: "https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=600&q=80" },
+            { num: "02", title: "N서울타워 (남산)", desc: "서울의 중심에서 360도 환상적인 야경과 자물쇠 트리를 즐길 수 있는 명소.", img: "https://images.unsplash.com/photo-1538485399081-06af2b7492c6?auto=format&fit=crop&w=600&q=80" },
+            { num: "03", title: "북촌 한옥마을", desc: "도심 속 전통 한옥들이 아름답게 보존되어 있는 고즈넉한 골목길.", img: "https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&w=600&q=80" },
+            { num: "04", title: "DDP (동대문디자인플라자)", desc: "세계적인 건축가 자하 하디드가 설계한 미래지향적 복합 문화 공간.", img: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80" },
+            { num: "05", title: "홍대 거리", desc: "젊음과 예술, 버스킹과 독특한 카페가 가득한 트렌드의 중심지.", img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=600&q=80" },
+            { num: "06", title: "한강 공원 (반포)", desc: "탁 트인 강 전망과 함께 야경, 치킨, 피크닉을 즐기는 시민들의 휴식처.", img: "https://images.unsplash.com/photo-1546874177-980753385750?auto=format&fit=crop&w=600&q=80" },
+            { num: "07", title: "광장시장", desc: "빈대떡, 육회, 마약김밥 등 활기찬 전통시장의 맛과 정취를 느끼는 곳.", img: "https://images.unsplash.com/photo-1583160247961-a69d9d1b74d7?auto=format&fit=crop&w=600&q=80" },
+            { num: "08", title: "롯데월드타워 & 석촌호수", desc: "서울 최고층 빌딩과 아름다운 호수 공원이 어우러진 산책 명소.", img: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=600&q=80" },
+            { num: "09", title: "창덕궁과 후원", desc: "자연과 건축이 조화를 이루는 유네스코 세계문화유산 비원(秘苑).", img: "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&w=600&q=80" },
+            { num: "10", title: "익선동 한옥거리", desc: "오래된 한옥을 개조한 아기자기한 카페와 공방들이 모인 핫플레이스.", img: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=600&q=80" }
+        ];
+
+        const foods = [
+            { num: "01", title: "삼겹살", desc: "한국인의 소울 푸드, 노릇노릇하게 구워 상추와 쌈장에 싸 먹는 돼지고기 구이.", img: "https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=600&q=80" },
+            { num: "02", title: "떡볶이", desc: "매콤달콤한 고추장 양념에 쫄깃한 떡과 어묵이 어우러진 국민 간식.", img: "https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&w=600&q=80" },
+            { num: "03", title: "치킨과 맥주 (치맥)", desc: "바삭하게 튀긴 치킨과 시원한 맥주의 환상적인 궁합.", img: "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=600&q=80" },
+            { num: "04", title: "비빔밥", desc: "신선한 나물과 고추장, 참기름을 슥슥 비벼 먹는 건강한 한 끼.", img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80" },
+            { num: "05", title: "김치찌개", desc: "잘 익은 김치와 돼지고기를 푹 끓여내 얼큰하고 깊은 맛을 내는 찌개.", img: "https://images.unsplash.com/photo-1583032015877-e852ce8b6f3d?auto=format&fit=crop&w=600&q=80" },
+            { num: "06", title: "불고기", desc: "달콤 짭조름한 양념에 재운 소고기를 야채와 함께 부드럽게 구운 요리.", img: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=600&q=80" },
+            { num: "07", title: "설렁탕", desc: "사골을 오랜 시간 고아 내어 뽀얗고 진한 국물에 소면과 고기가 들어간 보양식.", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80" },
+            { num: "08", title: "냉면", desc: "시원하고 깔끔한 육수(또는 매콤한 양념)에 쫄깃한 면발이 더해진 여름철 별미.", img: "https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&w=600&q=80" },
+            { num: "09", title: "김밥", desc: "참기름 향이 솔솔 나는 밥과 다양한 속재료를 김에 말아 썰어낸 소풍 필수 음식.", img: "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?auto=format&fit=crop&w=600&q=80" },
+            { num: "10", title: "호떡", desc: "달콤한 설탕과 견과류 소스가 가득 들어있어 겨울철에 특히 생각나는 길거리 간식.", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" }
+        ];
+
+        function renderCards(data, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = data.map(item => `
+                <div class="card">
+                    <img src="${item.img}" alt="${item.title}" class="card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1508873696983-2df5c92063c7?auto=format&fit=crop&w=600&q=80'">
+                    <div class="card-content">
+                        <div class="card-number">${item.num}</div>
+                        <h3 class="card-title">${item.title}</h3>
+                        <p class="card-desc">${item.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        renderCards(places, 'places-grid');
+        renderCards(foods, 'foods-grid');
+    </script>
+</body>
 </html>
