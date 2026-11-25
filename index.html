@@ -1,177 +1,182 @@
-<!DOCTYPE html>
-<html lang="ko">
+<!doctype html>
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>나의 서울 여행 & 맛집 기록</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #FF5722;
-            --primary-dark: #E64A19;
-            --bg-color: #FAFAFA;
-            --card-bg: #FFFFFF;
-            --text-main: #333333;
-            --text-sub: #666666;
-        }
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Pretendard', sans-serif;
-        }
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-        header {
-            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-        }
-        header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        header p {
-            font-size: 1.2rem;
-            color: #ccc;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        section {
-            margin-bottom: 60px;
-        }
-        h2.section-title {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            border-left: 5px solid var(--primary);
-            padding-left: 15px;
-            color: var(--text-main);
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-        .card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        .card-img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            background-color: #ddd;
-        }
-        .card-content {
-            padding: 20px;
-        }
-        .card-number {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        .card-title {
-            font-size: 1.25rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        .card-desc {
-            font-size: 0.95rem;
-            color: var(--text-sub);
-        }
-        footer {
-            background-color: #1a1a1a;
-            color: #888;
-            text-align: center;
-            padding: 30px;
-            font-size: 0.9rem;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173d35">
+  <meta name="description" content="Cẩm nang nhỏ khám phá Seoul: những địa điểm đáng ghé thăm và món ngon Hàn Quốc nên thử.">
+  <title>Khám phá Seoul | Cẩm nang du lịch</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #20312d;
+      --muted: #65736e;
+      --green: #173d35;
+      --green-light: #e7f0e9;
+      --orange: #d87545;
+      --cream: #fbf8f1;
+      --paper: #fffefa;
+      --line: #e9e6dc;
+      --shadow: 0 14px 36px rgba(34, 49, 44, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .topbar {
+      position: sticky; top: 0; z-index: 5;
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      padding: 13px max(24px, calc((100% - 1120px) / 2));
+      background: rgba(251, 248, 241, .93); border-bottom: 1px solid rgba(32, 49, 45, .08);
+      backdrop-filter: blur(12px);
+    }
+    .brand { text-decoration: none; font-weight: 800; letter-spacing: -.03em; white-space: nowrap; }
+    .brand span { color: var(--orange); }
+    .nav { display: flex; gap: 8px; }
+    .nav a {
+      padding: 7px 13px; border-radius: 999px; color: var(--muted);
+      text-decoration: none; font-size: .92rem; font-weight: 650;
+    }
+    .nav a:hover, .nav a:focus-visible { background: var(--green-light); color: var(--green); }
+    .hero {
+      position: relative; overflow: hidden; isolation: isolate;
+      min-height: 440px; display: grid; place-items: center; padding: 80px 24px 100px;
+      color: white; text-align: center;
+      background: radial-gradient(ellipse at 50% 110%, #547664 0, transparent 42%),
+                  linear-gradient(145deg, #173d35 8%, #245348 57%, #a66345 150%);
+    }
+    .hero::before, .hero::after {
+      content: ""; position: absolute; z-index: -1; bottom: -3px; width: 100%; height: 130px;
+      background: #102f2a; opacity: .45; clip-path: polygon(0 65%, 8% 65%, 8% 46%, 13% 46%, 13% 70%, 20% 70%, 20% 28%, 24% 28%, 24% 62%, 31% 62%, 31% 40%, 36% 40%, 36% 72%, 42% 72%, 42% 18%, 47% 18%, 47% 67%, 55% 67%, 55% 36%, 61% 36%, 61% 73%, 69% 73%, 69% 48%, 74% 48%, 74% 67%, 81% 67%, 81% 30%, 86% 30%, 86% 66%, 93% 66%, 93% 43%, 100% 43%, 100% 100%, 0 100%);
+    }
+    .hero::after { bottom: 0; height: 82px; background: #0c2824; opacity: .48; transform: scaleX(-1); }
+    .hero-inner { max-width: 760px; }
+    .eyebrow { margin: 0 0 14px; color: #f4c6a4; font-size: .78rem; font-weight: 800; letter-spacing: .17em; text-transform: uppercase; }
+    h1 { max-width: 700px; margin: 0 auto 18px; font-size: clamp(2.5rem, 7vw, 5rem); line-height: 1.05; letter-spacing: -.055em; }
+    .hero p:not(.eyebrow) { max-width: 600px; margin: 0 auto; color: rgba(255,255,255,.83); font-size: clamp(1rem, 2vw, 1.2rem); }
+    .hero-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .button { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border: 1px solid rgba(255,255,255,.5); border-radius: 999px; color: white; text-decoration: none; font-weight: 750; }
+    .button.primary { border-color: #f3b48e; background: #f3b48e; color: #352820; }
+    .button:hover { transform: translateY(-2px); }
+    main { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .intro { display: flex; align-items: end; justify-content: space-between; gap: 24px; padding: 64px 0 24px; }
+    .intro p { max-width: 560px; margin: 0; color: var(--muted); }
+    .section-kicker { margin: 0 0 7px; color: var(--orange); font-size: .76rem; font-weight: 850; letter-spacing: .14em; text-transform: uppercase; }
+    h2 { margin: 0; color: var(--green); font-size: clamp(1.8rem, 4vw, 2.65rem); line-height: 1.2; letter-spacing: -.04em; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; padding-bottom: 34px; }
+    .card {
+      overflow: hidden; border: 1px solid var(--line); border-radius: 18px;
+      background: var(--paper); box-shadow: 0 4px 16px rgba(34,49,44,.035);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .visual {
+      min-height: 142px; display: grid; place-items: center; position: relative; overflow: hidden;
+      background: linear-gradient(135deg, var(--wash), #fff8e9);
+    }
+    .visual::before, .visual::after { content: ""; position: absolute; border-radius: 50%; background: rgba(255,255,255,.38); }
+    .visual::before { width: 130px; height: 130px; top: -45px; right: -17px; }
+    .visual::after { width: 70px; height: 70px; bottom: -33px; left: 12px; }
+    .emoji { position: relative; z-index: 1; font-size: 4.2rem; filter: drop-shadow(0 8px 7px rgba(50,50,30,.12)); }
+    .card-body { padding: 17px 18px 20px; }
+    .card-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 7px; }
+    .number { color: var(--orange); font-size: .78rem; font-weight: 850; letter-spacing: .1em; }
+    .tag { padding: 3px 9px; border-radius: 99px; background: var(--green-light); color: var(--green); font-size: .72rem; font-weight: 750; }
+    h3 { margin: 0 0 7px; font-size: 1.12rem; line-height: 1.35; }
+    .card-body p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .tip { margin: 10px 0 0 !important; padding-top: 10px; border-top: 1px solid var(--line); color: #596b61 !important; font-size: .82rem !important; }
+    .tip strong { color: var(--green); }
+    .food-section { margin-top: 8px; padding-bottom: 64px; }
+    .closing {
+      display: flex; justify-content: space-between; align-items: center; gap: 22px;
+      margin: 0 0 58px; padding: 25px 28px; border-radius: 18px;
+      background: #e9efe7; color: var(--green);
+    }
+    .closing p { max-width: 690px; margin: 4px 0 0; color: #53675f; }
+    .closing .mark { flex: 0 0 auto; font-size: 2.5rem; }
+    footer { padding: 24px; background: #173d35; color: rgba(255,255,255,.75); text-align: center; font-size: .87rem; }
+    footer p { margin: 0; }
+    :focus-visible { outline: 3px solid #e79367; outline-offset: 3px; }
+    @media (max-width: 780px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .intro { display: block; }
+      .intro p { margin-top: 12px; }
+    }
+    @media (max-width: 540px) {
+      .topbar { padding: 11px 16px; gap: 8px; }
+      .brand { font-size: .92rem; }
+      .nav { gap: 0; }
+      .nav a { padding: 7px 9px; font-size: .82rem; }
+      .hero { min-height: 400px; padding: 65px 20px 88px; }
+      main { width: min(100% - 28px, 460px); }
+      .intro { padding-top: 48px; }
+      .grid { gap: 12px; }
+      .visual { min-height: 112px; }
+      .emoji { font-size: 3.5rem; }
+      .card-body { padding: 14px 13px 16px; }
+      h3 { font-size: 1rem; }
+      .card-body p { font-size: .85rem; }
+      .tag { font-size: .66rem; }
+      .closing { padding: 20px; }
+    }
+    @media (max-width: 370px) { .grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+  </style>
 </head>
 <body>
-
-    <header>
-        <h1>🇰🇷 서울 매력 탐구 생활</h1>
-        <p>제가 가장 사랑하는 도시, 서울의 베스트 명소 10곳과 맛있는 음식 10가지를 소개합니다.</p>
-    </header>
-
-    <div class="container">
-        <!-- 서울 명소 10선 -->
-        <section>
-            <h2 class="section-title">✨ 서울 추천 베스트 명소 10선</h2>
-            <div class="grid" id="places-grid"></div>
-        </section>
-
-        <!-- 한국 음식 10선 -->
-        <section>
-            <h2 class="section-title">🥢 꼭 먹어야 할 한국 음식 10선</h2>
-            <div class="grid" id="foods-grid"></div>
-        </section>
+  <a href="#main" style="position:absolute;left:-9999px;top:auto" onfocus="this.style.left='12px'" onblur="this.style.left='-9999px'">Bỏ qua điều hướng</a>
+  <nav class="topbar" aria-label="Điều hướng chính">
+    <a class="brand" href="#top">SEOUL <span>·</span> CẨM NANG NHỎ</a>
+    <div class="nav"><a href="#places">Địa điểm</a><a href="#foods">Món ngon</a></div>
+  </nav>
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <p class="eyebrow">Một chuyến đi, nhiều điều đáng nhớ</p>
+      <h1>Khám phá Seoul<br>theo cách của bạn</h1>
+      <p>Từ cung điện cổ và những con phố náo nhiệt đến món ăn nóng hổi bên đường — bắt đầu hành trình Seoul tại đây.</p>
+      <div class="hero-links"><a class="button primary" href="#places">🗺️ Khám phá địa điểm</a><a class="button" href="#foods">🥢 Tìm món ngon</a></div>
     </div>
-
-    <footer>
-        <p>&copy; 2026 My Korea Travel Archive. All rights reserved.</p>
-    </footer>
-
-    <script>
-        const places = [
-            { num: "01", title: "경복궁", desc: "조선 시대의 정궁으로 웅장한 건축물과 수문장 교대식을 볼 수 있는 곳.", img: "https://images.unsplash.com/photo-1596436889106-be35e843f974?auto=format&fit=crop&w=600&q=80" },
-            { num: "02", title: "N서울타워 (남산)", desc: "서울의 중심에서 360도 환상적인 야경과 자물쇠 트리를 즐길 수 있는 명소.", img: "https://images.unsplash.com/photo-1538485399081-06af2b7492c6?auto=format&fit=crop&w=600&q=80" },
-            { num: "03", title: "북촌 한옥마을", desc: "도심 속 전통 한옥들이 아름답게 보존되어 있는 고즈넉한 골목길.", img: "https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&w=600&q=80" },
-            { num: "04", title: "DDP (동대문디자인플라자)", desc: "세계적인 건축가 자하 하디드가 설계한 미래지향적 복합 문화 공간.", img: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80" },
-            { num: "05", title: "홍대 거리", desc: "젊음과 예술, 버스킹과 독특한 카페가 가득한 트렌드의 중심지.", img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=600&q=80" },
-            { num: "06", title: "한강 공원 (반포)", desc: "탁 트인 강 전망과 함께 야경, 치킨, 피크닉을 즐기는 시민들의 휴식처.", img: "https://images.unsplash.com/photo-1546874177-980753385750?auto=format&fit=crop&w=600&q=80" },
-            { num: "07", title: "광장시장", desc: "빈대떡, 육회, 마약김밥 등 활기찬 전통시장의 맛과 정취를 느끼는 곳.", img: "https://images.unsplash.com/photo-1583160247961-a69d9d1b74d7?auto=format&fit=crop&w=600&q=80" },
-            { num: "08", title: "롯데월드타워 & 석촌호수", desc: "서울 최고층 빌딩과 아름다운 호수 공원이 어우러진 산책 명소.", img: "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=600&q=80" },
-            { num: "09", title: "창덕궁과 후원", desc: "자연과 건축이 조화를 이루는 유네스코 세계문화유산 비원(秘苑).", img: "https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&w=600&q=80" },
-            { num: "10", title: "익선동 한옥거리", desc: "오래된 한옥을 개조한 아기자기한 카페와 공방들이 모인 핫플레이스.", img: "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=600&q=80" }
-        ];
-
-        const foods = [
-            { num: "01", title: "삼겹살", desc: "한국인의 소울 푸드, 노릇노릇하게 구워 상추와 쌈장에 싸 먹는 돼지고기 구이.", img: "https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=600&q=80" },
-            { num: "02", title: "떡볶이", desc: "매콤달콤한 고추장 양념에 쫄깃한 떡과 어묵이 어우러진 국민 간식.", img: "https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&w=600&q=80" },
-            { num: "03", title: "치킨과 맥주 (치맥)", desc: "바삭하게 튀긴 치킨과 시원한 맥주의 환상적인 궁합.", img: "https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=600&q=80" },
-            { num: "04", title: "비빔밥", desc: "신선한 나물과 고추장, 참기름을 슥슥 비벼 먹는 건강한 한 끼.", img: "https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=600&q=80" },
-            { num: "05", title: "김치찌개", desc: "잘 익은 김치와 돼지고기를 푹 끓여내 얼큰하고 깊은 맛을 내는 찌개.", img: "https://images.unsplash.com/photo-1583032015877-e852ce8b6f3d?auto=format&fit=crop&w=600&q=80" },
-            { num: "06", title: "불고기", desc: "달콤 짭조름한 양념에 재운 소고기를 야채와 함께 부드럽게 구운 요리.", img: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=600&q=80" },
-            { num: "07", title: "설렁탕", desc: "사골을 오랜 시간 고아 내어 뽀얗고 진한 국물에 소면과 고기가 들어간 보양식.", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=600&q=80" },
-            { num: "08", title: "냉면", desc: "시원하고 깔끔한 육수(또는 매콤한 양념)에 쫄깃한 면발이 더해진 여름철 별미.", img: "https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&w=600&q=80" },
-            { num: "09", title: "김밥", desc: "참기름 향이 솔솔 나는 밥과 다양한 속재료를 김에 말아 썰어낸 소풍 필수 음식.", img: "https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?auto=format&fit=crop&w=600&q=80" },
-            { num: "10", title: "호떡", desc: "달콤한 설탕과 견과류 소스가 가득 들어있어 겨울철에 특히 생각나는 길거리 간식.", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=600&q=80" }
-        ];
-
-        function renderCards(data, containerId) {
-            const container = document.getElementById(containerId);
-            container.innerHTML = data.map(item => `
-                <div class="card">
-                    <img src="${item.img}" alt="${item.title}" class="card-img" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1508873696983-2df5c92063c7?auto=format&fit=crop&w=600&q=80'">
-                    <div class="card-content">
-                        <div class="card-number">${item.num}</div>
-                        <h3 class="card-title">${item.title}</h3>
-                        <p class="card-desc">${item.desc}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        renderCards(places, 'places-grid');
-        renderCards(foods, 'foods-grid');
-    </script>
+  </header>
+  <main id="main">
+    <section id="places" aria-labelledby="places-title">
+      <div class="intro"><div><p class="section-kicker">Đi đâu ở Seoul?</p><h2 id="places-title">10 điểm đến đáng ghé</h2></div><p>Chọn một buổi sáng ở cung điện, một chiều dạo phố và một tối ngắm thành phố lên đèn. Đây là những nơi giúp bạn cảm nhận nhiều sắc thái của Seoul.</p></div>
+      <div class="grid">
+        <article class="card"><div class="visual" style="--wash:#e9c99f"><span class="emoji" role="img" aria-label="Cung điện">🏯</span></div><div class="card-body"><div class="card-meta"><span class="number">01</span><span class="tag">Lịch sử</span></div><h3>Cung điện Gyeongbokgung</h3><p>Cung điện lớn nhất triều Joseon, nổi bật với cổng Gwanghwamun và nghi thức đổi gác.</p><p class="tip"><strong>Mách nhỏ:</strong> Thuê hanbok để vào cửa miễn phí.</p></div></article>
+        <article class="card"><div class="visual" style="--wash:#f4cf9f"><span class="emoji" role="img" aria-label="Tháp trên núi">🗼</span></div><div class="card-body"><div class="card-meta"><span class="number">02</span><span class="tag">Ngắm cảnh</span></div><h3>Tháp N Seoul</h3><p>Đi cáp treo hoặc dạo lên núi Namsan để ngắm toàn cảnh thành phố, nhất là lúc hoàng hôn.</p><p class="tip"><strong>Mách nhỏ:</strong> Mang áo khoác nếu đi buổi tối.</p></div></article>
+        <article class="card"><div class="visual" style="--wash:#d7e3d2"><span class="emoji" role="img" aria-label="Nhà hanok">🏘️</span></div><div class="card-body"><div class="card-meta"><span class="number">03</span><span class="tag">Phố cổ</span></div><h3>Làng Bukchon Hanok</h3><p>Những mái nhà hanok truyền thống nằm trên các con dốc giữa cung điện Gyeongbokgung và Changdeokgung.</p><p class="tip"><strong>Lưu ý:</strong> Đây là khu dân cư, hãy giữ yên tĩnh.</p></div></article>
+        <article class="card"><div class="visual" style="--wash:#cfe1df"><span class="emoji" role="img" aria-label="Kiến trúc hiện đại">🌙</span></div><div class="card-body"><div class="card-meta"><span class="number">04</span><span class="tag">Kiến trúc</span></div><h3>DDP</h3><p>Không gian văn hóa với kiến trúc uốn lượn đặc trưng, triển lãm, cửa hàng và khu thiết kế.</p><p class="tip"><strong>Gợi ý:</strong> Ghé buổi tối để thấy công trình sáng đèn.</p></div></article>
+        <article class="card"><div class="visual" style="--wash:#f2d5ca"><span class="emoji" role="img" aria-label="Âm nhạc đường phố">🎸</span></div><div class="card-body"><div class="card-meta"><span class="number">05</span><span class="tag">Năng động</span></div><h3>Hongdae</h3><p>Khu phố trẻ với nghệ sĩ đường phố, cửa hàng độc lập, quán cà phê và nhiều món ăn vặt.</p><p class="tip"><strong>Gợi ý:</strong> Dành buổi chiều và tối để dạo phố.</p></div></article>
+        <article class="card"><div class="visual" style="--wash:#c9e2e3"><span class="emoji" role="img" aria-label="Dòng sông">🌉</span></div><div class="card-body"><div class="card-meta"><span class="number">06</span><span class="tag">Ngoài trời</span></div><h3>Công viên sông Hàn</h3><p>Không gian thư giãn bên sông để đi bộ, đạp xe hoặc trải bạt picnic cùng bạn bè.</p><p class="tip"><strong>Mách nhỏ:</strong> Kiểm tra giờ trình diễn cầu vồng Banpo theo mùa.</p></div></article>
+        <article class="card"><div class="visual" style="--wash:#f3d9a7"><span class="emoji" role="img" aria-label="Chợ truyền thống">🏮</span></div><div class="card-body"><div class="card-meta"><span class="number">07</span><span class="tag">Ẩm thực</span></div><h3>Chợ Gwangjang</h3><p>Khu chợ lâu đời, đông vui với bánh kếp đậu xanh, mayak gimbap và nhiều quầy ăn tại chỗ.</p><p class="tip"><strong>Gợi ý:</strong> Mang tiền mặt mệnh giá nhỏ.</p></div></article>
+        <article class="card"><div class="visual" style="--wash:#d7e6ed"><span class="emoji" role="img" aria-label="Tòa nhà cao tầng">🏙️</span></div><div class="card-body"><div class="card-meta"><span class="number">08</span><span class="tag">Ngắm cảnh</span></div><h3>Lotte World Tower &amp; hồ Seokchon</h3><p>Ngắm hồ, đi dạo quanh công viên rồi lên đài quan sát ở một trong những tòa nhà cao nhất thế giới.</p><p class="tip"><strong>Mách nhỏ:</strong> Mùa hoa anh đào quanh hồ rất đông khách.</p></div></article>
+        <article class="card"><div class="visual" style="--wash:#d7e4cf"><span class="emoji" role="img" aria-label="Khu vườn cung điện">🌿</span></div><div class="card-body"><div class="card-meta"><span class="number">09</span><span class="tag">Di sản</span></div><h3>Cung Changdeokgung &amp; Huwon</h3><p>Cung điện di sản UNESCO nổi tiếng với khu vườn Huwon hài hòa cùng địa hình tự nhiên.</p><p class="tip"><strong>Lưu ý:</strong> Khu vườn cần vé riêng và có thể cần đặt trước.</p></div></article>
+        <article class="card"><div class="visual" style="--wash:#f1d2bd"><span class="emoji" role="img" aria-label="Quán cà phê hanok">☕</span></div><div class="card-body"><div class="card-meta"><span class="number">10</span><span class="tag">Cà phê</span></div><h3>Ikseon-dong</h3><p>Những con ngõ nhỏ với hanok được cải tạo thành quán cà phê, tiệm bánh và cửa hàng xinh xắn.</p><p class="tip"><strong>Gợi ý:</strong> Đi ngày thường để thong thả chụp ảnh.</p></div></article>
+      </div>
+    </section>
+    <section class="food-section" id="foods" aria-labelledby="foods-title">
+      <div class="intro"><div><p class="section-kicker">Ăn gì ở Seoul?</p><h2 id="foods-title">10 món ngon nên thử</h2></div><p>Từ món ăn no bụng đến đồ ăn đường phố ngọt cay — nhớ để dành chỗ cho một bữa ăn thật ngon.</p></div>
+      <div class="grid">
+        <article class="card"><div class="visual" style="--wash:#f0c8ae"><span class="emoji" role="img" aria-label="Thịt nướng">🥩</span></div><div class="card-body"><div class="card-meta"><span class="number">01</span><span class="tag">Món chính</span></div><h3>Samgyeopsal</h3><p>Thịt ba chỉ nướng tại bàn, cuốn cùng rau sống, tỏi và tương ssamjang.</p></div></article>
+        <article class="card"><div class="visual" style="--wash:#efc4b0"><span class="emoji" role="img" aria-label="Bánh gạo cay">🍢</span></div><div class="card-body"><div class="card-meta"><span class="number">02</span><span class="tag">Ăn vặt</span></div><h3>Tteokbokki</h3><p>Bánh gạo dai nấu trong sốt gochujang cay ngọt, thường ăn cùng chả cá.</p></div></article>
+        <article class="card"><div class="visual" style="--wash:#f0d8aa"><span class="emoji" role="img" aria-label="Gà rán và bia">🍗</span></div><div class="card-body"><div class="card-meta"><span class="number">03</span><span class="tag">Món chính</span></div><h3>Gà rán và bia (chimaek)</h3><p>Gà rán giòn ăn cùng bia mát lạnh — món quen thuộc cho buổi tối tụ họp.</p></div></article>
+        <article class="card"><div class="visual" style="--wash:#dce7bd"><span class="emoji" role="img" aria-label="Cơm trộn">🍚</span></div><div class="card-body"><div class="card-meta"><span class="number">04</span><span class="tag">Món chính</span></div><h3>Bibimbap</h3><p>Cơm trộn với rau, thịt, trứng, dầu mè và tương ớt gochujang.</p></div></article>
+        <article class="card"><div class="visual" style="--wash:#e7c5b7"><span class="emoji" role="img" aria-label="Canh kimchi">🍲</span></div><div class="card-body"><div class="card-meta"><span class="number">05</span><span class="tag">Món chính</span></div><h3>Kimchi jjigae</h3><p>Canh kimchi chua cay nấu với đậu phụ và thịt, ăn nóng cùng cơm trắng.</p></div></article>
+        <article class="card"><div class="visual" style="--wash:#e6d0a7"><span class="emoji" role="img" aria-label="Thịt bò nướng">🥘</span></div><div class="card-body"><div class="card-meta"><span class="number">06</span><span class="tag">Món chính</span></div><h3>Bulgogi</h3><p>Thịt bò thái mỏng ướp nước tương, lê và gia vị rồi nướng hoặc xào mềm thơm.</p></div></article>
+        <article class="card"><div class="visual" style="--wash:#eee0c5"><span class="emoji" role="img" aria-label="Canh xương bò">🍜</span></div><div class="card-body"><div class="card-meta"><span class="number">07</span><span class="tag">Món chính</span></div><h3>Seolleongtang</h3><p>Canh xương bò hầm lâu có nước dùng trắng đục, thường ăn cùng cơm và hành lá.</p></div></article>
+        <article class="card"><div class="visual" style="--wash:#c9dedc"><span class="emoji" role="img" aria-label="Mì lạnh">🧊</span></div><div class="card-body"><div class="card-meta"><span class="number">08</span><span class="tag">Món chính</span></div><h3>Naengmyeon</h3><p>Mì sợi dai dùng lạnh với nước dùng thanh mát hoặc sốt cay trộn.</p></div></article>
+        <article class="card"><div class="visual" style="--wash:#d9dfbd"><span class="emoji" role="img" aria-label="Cơm cuộn rong biển">🍙</span></div><div class="card-body"><div class="card-meta"><span class="number">09</span><span class="tag">Ăn nhanh</span></div><h3>Gimbap</h3><p>Cơm và nhân rau, trứng hoặc thịt cuộn rong biển — tiện cho bữa trưa hoặc picnic.</p></div></article>
+        <article class="card"><div class="visual" style="--wash:#f2d2a0"><span class="emoji" role="img" aria-label="Bánh rán ngọt">🥞</span></div><div class="card-body"><div class="card-meta"><span class="number">10</span><span class="tag">Tráng miệng</span></div><h3>Hotteok</h3><p>Bánh áp chảo nóng, bên trong có nhân đường nâu, quế và các loại hạt.</p></div></article>
+      </div>
+    </section>
+    <aside class="closing"><div><strong>Chúc bạn có một chuyến đi thật vui!</strong><p>Lưu lại địa điểm yêu thích, đi chậm qua những con phố nhỏ và thử một món mới mỗi ngày.</p></div><span class="mark" aria-hidden="true">✈️</span></aside>
+  </main>
+  <footer><p>© 2026 · Cẩm nang khám phá Seoul</p></footer>
 </body>
 </html>
+
