@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 900" role="img" aria-labelledby="title desc">
+<title id="title">MINHLE KOREA — Seoul at night</title>
+<desc id="desc">An original neon illustration of Seoul with a radiant sun, N Seoul Tower, Hanok rooftops and a glowing river.</desc>
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#10172f"/><stop offset=".48" stop-color="#292b58"/><stop offset="1" stop-color="#f07b63"/></linearGradient>
+ <radialGradient id="glow"><stop stop-color="#ffd99c" stop-opacity=".95"/><stop offset=".3" stop-color="#ff997b" stop-opacity=".48"/><stop offset="1" stop-color="#ee7890" stop-opacity="0"/></radialGradient>
+ <linearGradient id="river" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#7cf3e0" stop-opacity="0"/><stop offset=".5" stop-color="#7cf3e0" stop-opacity=".72"/><stop offset="1" stop-color="#7cf3e0" stop-opacity="0"/></linearGradient>
+ <linearGradient id="ridge" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#343860"/><stop offset="1" stop-color="#141b35"/></linearGradient>
+ <filter id="blur"><feGaussianBlur stdDeviation="32"/></filter>
+ <filter id="neon" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="1920" height="900" fill="url(#sky)"/>
+<circle cx="1485" cy="345" r="310" fill="url(#glow)"/>
+<circle cx="1485" cy="345" r="115" fill="#ffd99c" opacity=".87"/>
+<path d="M0 540 175 400 308 494 474 359 628 515 814 397 970 513 1144 370 1308 504 1483 381 1652 508 1790 415 1920 500V900H0Z" fill="url(#ridge)" opacity=".82"/>
+<path d="M0 605 215 500 382 567 575 457 741 585 926 474 1092 590 1285 465 1455 572 1640 480 1810 562 1920 510V900H0Z" fill="#202746"/>
+<!-- far city -->
+<g fill="#283052" opacity=".92">
+<path d="M0 605h82v-76h65v76h45v-126h84v126h48v-90h59v90h44v-140h83v140h40v-93h67v93h49v-165h94v165h38v-115h63v115h44v-78h70v78h43v-130h83v130h57v-100h75v100h40v-156h92v156h42v-95h73v95h43v-138h78v138h50v-90h60v90h42v-148h100v148h51v-108h68v108h41v-126h89v126h30v295H0Z"/>
+</g>
+<!-- high rises with lighted windows -->
+<g fill="#3a4268">
+<path d="M95 900V623h80v277Zm101 0V676h66v224Zm177 0V581h95v319Zm118 0V649h78v251Zm183 0V548h94v352Zm112 0V621h78v279Zm176 0V593h108v307Zm132 0V653h84v247Zm178 0V579h92v321Zm120 0V631h78v269Zm124 0V557h104v343Zm135 0V652h72v248Z"/>
+</g>
+<g fill="#ffc17f" opacity=".72">
+<path d="M115 651h12v19h-12zm31 0h12v19h-12zm-31 39h12v19h-12zm0 39h12v19h-12zm215-112h13v20h-13zm32 0h13v20h-13zm-32 39h13v20h-13zm150 33h12v18h-12zm30 0h12v18h-12zm-30 37h12v18h-12zm155-148h14v22h-14zm34 0h14v22h-14zm-34 43h14v22h-14zm0 43h14v22h-14zm162-94h14v22h-14zm33 0h14v22h-14zm-33 43h14v22h-14zm191 9h14v22h-14zm34 0h14v22h-14zm-34 43h14v22h-14zm174-91h14v22h-14zm34 0h14v22h-14zm-34 43h14v22h-14zm166-101h14v22h-14zm35 0h14v22h-14zm-35 44h14v22h-14z"/>
+</g>
+<!-- Hanok roofs -->
+<g stroke="#f4a482" stroke-width="8" fill="#30314f" stroke-linejoin="round">
+<path d="M110 600q90-95 180 0q-90-30-180 0Zm23 2v66m131-66v66"/>
+<path d="M390 632q79-82 158 0q-79-26-158 0Zm22 0v52m113-52v52"/>
+<path d="M1553 640q88-92 176 0q-88-29-176 0Zm24 0v63m128-63v63"/>
+</g>
+<!-- N Seoul Tower -->
+<g filter="url(#neon)" stroke="#ffcf9e" stroke-linecap="round" fill="none">
+<path d="M1110 604 1150 348l40 256M1125 508h50m-44-57h38m-33-54h28" stroke-width="9"/>
+<path d="M1103 362h95M1122 327h56M1140 286h20M1150 252v32" stroke-width="8"/>
+<path d="M1140 396h20" stroke="#fff1c6" stroke-width="12"/>
+</g>
+<!-- glassy river and luminous route -->
+<path d="M0 756c330-74 475 89 775 28s446-151 717-66 305 44 428-1v183H0Z" fill="#111b38" opacity=".78"/>
+<path d="M0 770c340-76 481 73 778 16s447-137 718-53 306 42 424-1" fill="none" stroke="url(#river)" stroke-width="10" filter="url(#neon)"/>
+<path d="M0 820c337-71 482 59 772 11s442-111 717-43 315 34 431-2" fill="none" stroke="#ffb28d" stroke-opacity=".5" stroke-width="2"/>
+<!-- stars -->
+<g fill="#fff3d7">
+<circle cx="226" cy="191" r="4"/><circle cx="348" cy="125" r="3"/><circle cx="526" cy="222" r="4"/><circle cx="744" cy="108" r="3"/><circle cx="923" cy="187" r="4"/><circle cx="1056" cy="101" r="3"/><circle cx="1284" cy="158" r="4"/><circle cx="1675" cy="104" r="3"/><circle cx="1778" cy="244" r="4"/><circle cx="865" cy="304" r="3"/>
+</g>
+<g stroke="#fff3d7" stroke-width="2" opacity=".8"><path d="M226 178v26m-13-13h26"/><path d="M923 174v26m-13-13h26"/><path d="M1675 92v24m-12-12h24"/></g>
+<!-- brand stamp -->
+<g fill="none" stroke="#a9ffe9" opacity=".52">
+<circle cx="1760" cy="715" r="76" stroke-width="2"/><circle cx="1760" cy="715" r="62" stroke-width="1"/>
+</g>
+<text x="1760" y="738" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="54" letter-spacing="-4" fill="#c6fff2" opacity=".78">MK</text>
+</svg>
